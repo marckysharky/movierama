@@ -8,6 +8,10 @@ class Ability
       movie.user_id != user.id
     end
 
+    can :user, User do |u|
+      user.uid == u.uid
+    end
+
     can :create, Movie
   end
 end

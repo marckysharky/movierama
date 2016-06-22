@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-12
+      .page-header
+        %h2= @user.name
+  .row
+    .col-md-9
+      = form_tag user_path(@user), { method: :put, class: 'form', role: 'form' } do
+        .form-group{ class: @validator.class_for(:email) }
+          %label{ for:  'email' } Email
+          %input.form-control{ type: 'email', name: 'email', value: @user.email  }
+        .form-group{ class: @validator.class_for(:title) }
+          %label{ for: 'Notifications' } Notifications
+          %input.form-control{ type: 'checkbox', name: 'wants_notifications', value: 'true', checked: @user.wants_notifications? }
+            Receive notifications?
+        .form-group
+          = submit_tag 'Update', class: 'btn btn-primary'
