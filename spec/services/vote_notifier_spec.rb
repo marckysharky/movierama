@@ -27,9 +27,26 @@ RSpec.describe VoteNotifier do
         allow(user_author).to receive(:wants_notifications).and_return(true)
       end
 
-      it do
-        expect(mailer).to receive(:call)
-        subject
+      context 'email present' do
+        before do
+          allow(user_author).to receive(:email) { 'foo@bar.com' }
+        end
+
+        it do
+          expect(mailer).to receive(:call)
+          subject
+        end
+      end
+
+      context 'email not present' do
+        before do
+          allow(user_author).to receive(:email)
+        end
+
+        it do
+          expect(mailer).to_not receive(:call)
+          subject
+        end
       end
     end
 
@@ -45,5 +62,6 @@ RSpec.describe VoteNotifier do
         subject
       end
     end
+
   end
 end
