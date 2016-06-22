@@ -12,4 +12,8 @@ class UserDecorator < Draper::Decorator
   def wants_notifications?
     object.wants_notifications.to_s == 'true'
   end
+
+  def has_email?
+    !object.email.to_s.strip.empty?
+  end
 end
