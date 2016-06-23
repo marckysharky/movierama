@@ -20,4 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  mailers:
+    vote:
+      like:
+        subject: "Someone liked your movie."
+        body: "%{user} liked your movie %{movie}."
+      hate:
+        subject: "Someone hated your movie."
+        body: "%{user} hated your movie %{movie}."

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resource :session, only: %i(create destroy)
   get '/auth/:provider/callback', to: 'sessions#create'
 
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :vote, only: %i(create destroy)
   end
 
-  resources :users, only: %i() do
+  resources :users, only: %i(show update) do
     resources :movies, only: %(index), controller: 'movies'
   end
 

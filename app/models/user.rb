@@ -14,4 +14,11 @@ class User < BaseModel
 
   # Submitted movies
   collection :movies, :Movie
+
+  # Email
+  attribute :email
+  index     :email
+
+  attribute :wants_notifications
+  index     :wants_notifications
 end
