@@ -11,7 +11,11 @@ class VoteNotifier
     return false unless wants_notifications?
     return false unless has_email?
 
-    @mailer.call(user: @movie.user, movie: @movie, like_or_hate: like_or_hate)
+    @mailer.call(user: @movie.user, movie: @movie, like_or_hate: like_or_hate).deliver!
+    true
+  rescue => e
+    Rails.logger.warn e.message
+    false
   end
 
   private
